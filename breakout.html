@@ -15,6 +15,7 @@
     
     <script>
         //////////////////////////////VARIABLES
+
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var x = canvas.width/2;
@@ -37,6 +38,10 @@
         var brickPadding = 10;
         var brickOffsetTop = 30;
         var brickOffsetLeft = 30;
+
+        //lives for player
+        var lives = 3;
+
         //paints each brick, 2D array containing column d & r and x, y positions 
         var bricks = [];
         for(var c = 0; c < brickColumnCount; c++) {
@@ -74,7 +79,7 @@
                 paddleX = relativeX - paddleWidth/2
             }
         }
-        
+
         function collisionDetection() {
             for (var c = 0; c < brickColumnCount; c++) {
                 for (var r = 0; r < brickRowCount; r++) {
@@ -84,7 +89,7 @@
                             dy = -dy;
                             b.status = 0;
                             score++;
-                            if (score == brickRowCount*brickkColumnCount) {
+                            if (score == brickRowCount*brickColumnCount) {
                                 alert("You Win! CONGRATULATIONS!");
                                 document.location.relaod();
                                 clearInterval(interval);
@@ -99,6 +104,12 @@
             ctx.font = "16px Arial";
             ctx.fillstyle = "#0095DD";
             ctx.fillText("Score: "+score, 8, 20);
+        }
+
+        function drawLives() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Lives: "+lives, canvas.width-65, 20);
         }
 
         function drawBall() {
@@ -143,6 +154,7 @@
             drawPaddle();
             drawScore();
             drawScore();
+            drawLives();
             collisionDetection();
             //RIGHT AND LEFT, includes game over 
 
@@ -159,9 +171,18 @@
                     dy = -dy;
                 }
                 else {
-                    alert("GAME OVER");
-                    document.location.reload();     
-                    clearInterval(interval);
+                    lives--;
+                    if(!lives) {
+                        alert("GAME OVER");
+                        document.location.reload();
+                    }
+                    else {
+                        x = canvas.width/2;
+                        y = canvas.height-30;
+                        dx = 3;
+                        d = -3;
+                        paddleX = (canvas.width-paddleWidth)/2;
+                    }
                 }
             }
 
@@ -175,9 +196,10 @@
 
             x += dx; //paints ball in new position every frame 
             y += dy; //paints ball in new position every frame 
+            requestAnimationFrame(draw);
         }
 
-        var interval = setInterval(draw, 10);
+        draw();
 
     </script>
 </body>
