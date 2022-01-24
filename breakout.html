@@ -22,6 +22,7 @@
         var dx = 2;
         var dy = -2;
         var ballRadius = 10;
+        var score = 0;
         //paddle control and creation
         var paddleHeight = 10;
         var paddleWidth = 75;
@@ -74,10 +75,22 @@
                         if (x >b.x && x < b.x + brickWidth && b.y && y < b.y + brickHeight) {
                             dy = -dy;
                             b.status = 0;
+                            score++;
+                            if (score == brickRowCount*brickkColumnCount) {
+                                alert("You Win! CONGRATULATIONS!");
+                                document.location.relaod();
+                                clearInterval(interval);
+                            }
                         }
                     }
                 }
             }
+        }
+
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillstyle = "#0095DD";
+            ctx.fillText("Score: "+score, 8, 20);
         }
 
         function drawBall() {
@@ -120,6 +133,8 @@
             drawBricks();
             drawBall();
             drawPaddle();
+            drawScore();
+            drawScore();
             collisionDetection();
             //RIGHT AND LEFT, includes game over 
 
