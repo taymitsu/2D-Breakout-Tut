@@ -14,7 +14,6 @@
     <canvas id="myCanvas" width="480" height="320"> </canvas>
     
     <script>
-        //////////////////////////////VARIABLES
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var x = canvas.width/2;
