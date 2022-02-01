@@ -11,6 +11,6 @@ class GameLabel {
   render(ctx) {
     ctx.font = this.font;
     ctx.fillstyle = this.color;
-    ctx.fillText(`${+this.text} ${+this.value}`, this.x, this.y);
+    ctx.fillText(`${this.text} ${this.value}`, this.x, this.y);
   }
 }
