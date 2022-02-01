@@ -17,7 +17,7 @@ class Game {
     this.brickOffsetLeft = 30;
     this.paddleXStart = (this.canvas.width - this.paddleWidth) / 2;
     this.paddleYStart = (this.canvas.height - this.paddleHeight);
-    this.objectColor = '#0095DD';
+    this.objectColor = '#BA55D3';
 
     this.gameOverMessage = 'Game Over';
 
