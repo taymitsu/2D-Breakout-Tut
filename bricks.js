@@ -1,3 +1,9 @@
+// -----------------------------------------
+
+// Bricks
+
+// -----------------------------------------
+
 class Bricks {
   constructor(options) {
     const { cols, rows, width, height, padding, offsetLeft, offsetTop, color } = options;

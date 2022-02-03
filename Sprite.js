@@ -1,5 +1,11 @@
-class Paddle {
-  constructor(x, y, width, height, color = 'purple') {
+// -----------------------------------------
+
+// Sprite
+
+// -----------------------------------------
+
+class Sprite {
+  constructor(x = 0, y = 0, width = 10, height = 10, color = 'purple') {
     this.x = x;
     this.y = y;
     this.width = width;
@@ -25,5 +31,3 @@ class Paddle {
     ctx.closePath();
   }
 }
-
-

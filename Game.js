@@ -1,4 +1,8 @@
+// -----------------------------------------
 
+// Breakout Game
+
+// -----------------------------------------
 
 class Game {
   constructor(canvasId) {
@@ -22,8 +26,14 @@ class Game {
     this.gameOverMessage = 'Game Over';
 
     this.ball = new Ball(0, 0, 2, -2, this.ballRadius, this.objectColor);
-    this.paddle = new Paddle(this.paddleXStart, this.paddleYStart, this.paddleWidth, this.paddleHeight);
-    
+    this.paddle = new Sprite(
+      this.paddleXStart,
+      this.paddleYStart,
+      this.paddleWidth,
+      this.paddleHeight,
+      this.objectColor,
+    );
+
     this.bricks = new Bricks({
       cols: this.brickColumnCount,
       rows: this.brickRowCount,
@@ -35,7 +45,7 @@ class Game {
       color: this.objectColor,
     });
 
-    this.scoreLabel = new GameLabel('Score: ', 8, 20);
+    this.scoreLabel = new GameLabel('Score: ', 8, 20, this.objectColor);
     this.livesLabel = new GameLabel('Lives: ', this.canvas.width - 65, 20);
 
     this.rightPressed = false;
